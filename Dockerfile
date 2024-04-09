@@ -1,8 +1,6 @@
-FROM gradle:latest AS builder
-WORKDIR /app
+#urzywanie wbudowanego gradle dla skrocenia operacji
+FROM gradle:latest
+WORKDIR /Pulpit/DevOps/lab03
 RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/spring-projects/spring-petclinic
-WORKDIR /app/spring-petclinic
-
-FROM builder AS build
-RUN ./gradlew build -x test
+WORKDIR /Pulpit/DevOps/lab03/spring-petclinic
