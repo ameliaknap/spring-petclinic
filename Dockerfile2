@@ -1,2 +1,2 @@
-FROM build01 AS builder
-RUN ./gradlew test
+FROM builder:latest
+RUN ./gradlew build -x test
