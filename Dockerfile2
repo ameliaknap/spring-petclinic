@@ -1,0 +1,2 @@
+FROM build01 AS builder
+RUN ./gradlew test
