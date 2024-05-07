@@ -1,15 +1,5 @@
-FROM gradle:jdk17 as build
-COPY /src /app/src
-COPY /gradle /app/gradle
-COPY build.gradle gradlew settings.gradle /app/
+FROM gradle:latest
 WORKDIR /app
-RUN ./gradlew build -x test
-FROM eclipse-temurin:17-jre-alpine
-COPY --from=build /app/build/libs/*.jar /app/app.jar
-WORKDIR /app
-
-
-EXPOSE 8080
-
-
-CMD ["java", "-jar", "app.jar"]
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/spring-projects/spring-petclinic
+WORKDIR /app/spring-petclinic
