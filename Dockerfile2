@@ -1,2 +1,2 @@
-FROM build01:latest
-RUN ./gradlew build -x test
+FROM spring-petclinic AS builder
+RUN ./gradlew test
